@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">What\'s for Dinner</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_ingredients">IngredientsActivity</string>
+    <string name="title_activity_meal">MealActivity</string>
+    <string name="title_activity_recipe">RecipeActivity</string>
+</resources>
