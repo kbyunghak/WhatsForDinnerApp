@@ -7,4 +7,9 @@
     <string name="title_activity_ingredients">IngredientsActivity</string>
     <string name="title_activity_meal">MealActivity</string>
     <string name="title_activity_recipe">RecipeActivity</string>
+    <string name="recipe">Recipe</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="ingredientsName">Ham 100g, Onion 2, Olive 10, salts 100g, tomato source 500g</string>
+    <string name="foodName">Pizza</string>
+
 </resources>
