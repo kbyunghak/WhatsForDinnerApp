@@ -15,16 +15,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton asian = (ImageButton)findViewById(R.id.imageButton);
+        //ImageButton asian = (ImageButton)findViewById(R.id.imageButton);
         ImageButton western = (ImageButton)findViewById(R.id.WimageButton);
-
+/*
         asian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, IngredientsActivity.class));
             }
         });
-
+*/
         western.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

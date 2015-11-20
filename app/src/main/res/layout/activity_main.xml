@@ -9,11 +9,11 @@
 
 
     <TextView
+        android:id="@+id/textView"
+        android:text="Asian"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Asian"
-        android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -23,11 +23,11 @@
 
 
     <TextView
+        android:id="@+id/textView2"
+        android:text="Western"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Western"
-        android:id="@+id/textView2"
         android:layout_marginTop="74dp"
         android:layout_below="@+id/textView"
         android:layout_alignParentRight="true"
@@ -37,9 +37,9 @@
 
 
     <ImageButton
+        android:id="@+id/WimageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/WimageButton"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />

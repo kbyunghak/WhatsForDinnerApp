@@ -1,11 +1,13 @@
 
 # Android Studio
+local.properties
 .idea/
 .gradle
 /*/local.properties
 /*/out
 /*/*/build
 /*/*/production
+build/
 *.iml
 *.iws
 *.ipr
@@ -31,6 +33,9 @@ Thumbs.db
 # Generated files
 bin/
 gen/
+
+# files for the dex VM
+*.dex
 
 # Misc
 .zip
