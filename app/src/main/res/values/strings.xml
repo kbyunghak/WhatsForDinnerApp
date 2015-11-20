@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">What\'s for Dinner</string>
+    <string name="app_name">What\'s for Dinner?</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -11,5 +11,14 @@
     <string name="ingredients">Ingredients</string>
     <string name="ingredientsName">Ham 100g, Onion 2, Olive 10, salts 100g, tomato source 500g</string>
     <string name="foodName">Pizza</string>
+
+    <!-- IngredientsActivity & activity_ingredients.xml -->
+    <string name="veggies">Vegetables</string>
+    <string name="fruit">Fruit</string>
+    <string name="meat">Meat</string>
+    <string name="dairy">Dairy</string>
+    <string name="grains">Grains &amp; Beans</string>
+
+
 
 </resources>
