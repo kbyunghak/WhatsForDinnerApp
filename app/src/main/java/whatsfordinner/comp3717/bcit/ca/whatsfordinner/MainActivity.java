@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton asian = (ImageButton)findViewById(R.id.AimageButton);
+        ImageButton asian = (ImageButton)findViewById(R.id.imageButton);
         ImageButton western = (ImageButton)findViewById(R.id.WimageButton);
 
         asian.setOnClickListener(new View.OnClickListener() {
