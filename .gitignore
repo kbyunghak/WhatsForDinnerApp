@@ -2,12 +2,14 @@
 # Android Studio
 local.properties
 .idea/
+.idea/gradle.xml
+.idea/runConfigurations.xml
 .gradle
 /*/local.properties
 /*/out
 /*/*/build
 /*/*/production
-build/
+build/*
 *.iml
 *.iws
 *.ipr

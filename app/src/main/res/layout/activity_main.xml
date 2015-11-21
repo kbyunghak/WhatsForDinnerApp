@@ -8,52 +8,55 @@
     android:id="@+id/Main">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:text="Asian"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="59dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="177dp" />
-
     <ImageButton
         android:id="@+id/AimageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:src="@drawable/bibimbab"
-        android:clickable="false"
-        android:onClick="asian"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/WimageButton"
-        android:layout_alignStart="@+id/WimageButton" />
-
-
-    <TextView
-        android:id="@+id/textView2"
-        android:text="Western"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="66dp"
-        android:layout_marginEnd="66dp" />
-
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:onClick="asian"/>
 
     <ImageButton
         android:id="@+id/WimageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:src="@drawable/spaghetti"
+        android:layout_above="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:onClick="western"/>
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:text="Asian"
+        android:textSize="25sp"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
+        android:layout_above="@+id/WimageButton"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Western"
+        android:textSize="25sp"
+        android:textColor="#0000ff"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select your food style?"
+        android:textSize="35sp"
+        android:layout_above="@+id/AimageButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp" />
 
 </RelativeLayout>
+                                                                                                                                                                                                                                                                                                                                      
