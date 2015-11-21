@@ -21,6 +21,17 @@
         android:layout_marginStart="59dp"
         android:layout_marginTop="177dp" />
 
+    <ImageButton
+        android:id="@+id/AimageButton"
+        android:src="@drawable/bibimbab"
+        android:clickable="false"
+        android:onClick="asian"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_above="@+id/textView2"
+        android:layout_alignLeft="@+id/WimageButton"
+        android:layout_alignStart="@+id/WimageButton" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -38,6 +49,7 @@
 
     <ImageButton
         android:id="@+id/WimageButton"
+        android:src="@drawable/spaghetti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
