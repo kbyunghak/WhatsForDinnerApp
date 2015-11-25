@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import whatsfordinner.comp3717.bcit.ca.whatsfordinner.R;
 
 /**
  * Created by Byunghak on 11/20/2015.

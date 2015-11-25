@@ -1,16 +1,39 @@
 package whatsfordinner.comp3717.bcit.ca.whatsfordinner;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class MealActivity extends AppCompatActivity {
+import whatsfordinner.comp3717.bcit.ca.whatsfordinner.adaptor.MealArrayAdapter;
+
+public class MealActivity extends ListActivity {
+
+    static final String[] FoodList = new String[] { "Pizza", "Tortellini",
+            "Spagetti", "Cake"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal);
+
+        //setListAdapter(new ArrayAdapter<String>(this, R.layout.list_mobile,
+        //		R.id.label, MOBILE_OS));
+
+        setListAdapter(new MealArrayAdapter(this, FoodList));
+
+
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+
+        //get selected items
+        String selectedValue = (String) getListAdapter().getItem(position);
+        Toast.makeText(this, selectedValue, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
