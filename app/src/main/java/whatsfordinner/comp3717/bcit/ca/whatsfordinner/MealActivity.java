@@ -21,6 +21,8 @@ public class MealActivity extends ListActivity {
 
         //setListAdapter(new ArrayAdapter<String>(this, R.layout.list_mobile,
         //		R.id.label, MOBILE_OS));
+		
+		// test test
 
         setListAdapter(new MealArrayAdapter(this, FoodList));
 
