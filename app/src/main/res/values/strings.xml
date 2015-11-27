@@ -9,7 +9,7 @@
     <string name="title_activity_recipe">Recipe</string>
     <string name="recipe">Recipe</string>
     <string name="ingredients">Ingredients</string>
-    <string name="ingredientsName">Ham 100g, Onion 2, Olive 10, salts 100g, tomato source 500g</string>
+    <string name="ingredientsName">Ham 100g, Onion 2, Olive 10, salt 100g, tomato sauce 500g</string>
     <string name="foodName">Pizza</string>
 
     <!-- IngredientsActivity & activity_ingredients.xml -->

@@ -1,6 +1,7 @@
 package whatsfordinner.comp3717.bcit.ca.whatsfordinner;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,4 +60,12 @@ public class MealActivity extends ListActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void loadRecipe(final View view) {
+
+        Intent intent = new Intent(this, RecipeActivity.class);
+        startActivity(intent);
+    }
 }
+
+
