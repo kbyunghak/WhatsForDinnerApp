@@ -7,56 +7,60 @@
     tools:context="whatsfordinner.comp3717.bcit.ca.whatsfordinner.MainActivity"
     android:id="@+id/Main">
 
-
-    <ImageButton
-        android:id="@+id/AimageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:src="@drawable/bibimbab"
-        android:layout_above="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:onClick="asian"/>
-
-    <ImageButton
-        android:id="@+id/WimageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:src="@drawable/spaghetti"
-        android:layout_above="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:onClick="western"/>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Asian"
-        android:textSize="25sp"
-        android:textColor="#ff0000"
-        android:textStyle="bold"
-        android:layout_above="@+id/WimageButton"
-        android:layout_centerHorizontal="true" />
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Western"
-        android:textSize="25sp"
-        android:textColor="#0000ff"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What do you feel like?"
+            android:textSize="30sp"
+            android:layout_margin="10dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select your food style?"
-        android:textSize="35sp"
-        android:layout_above="@+id/AimageButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp" />
+        <ImageButton
+            android:id="@+id/AimageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/bibimbab"
+            android:layout_margin="10dp"
+            android:onClick="asian"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asian"
+            android:textSize="25sp"
+            android:textColor="#ff0000"
+            android:textStyle="bold"
+
+            />
+
+        <ImageButton
+            android:id="@+id/WimageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/spaghetti"
+            android:layout_margin="10dp"
+            android:onClick="western"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Western"
+            android:textSize="25sp"
+            android:textColor="#0000ff"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>
                                                                                                                                                                                                                                                                                                                                       

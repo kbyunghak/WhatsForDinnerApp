@@ -7,10 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class IngredientsActivity extends AppCompatActivity {
 
@@ -19,6 +19,12 @@ public class IngredientsActivity extends AppCompatActivity {
     private ListView lv_meat;
     private ListView lv_dairy;
     private ListView lv_grains;
+    private FoodItem[] veggieItems;
+    private FoodItem[] fruitItems;
+    private FoodItem[] meatItems;
+    private FoodItem[] dairyItems;
+    private FoodItem[] grainItems;
+    private FoodItem[] checked;
 
     private boolean expandVeggies = true;
     private boolean expandFruits = false;
@@ -26,11 +32,19 @@ public class IngredientsActivity extends AppCompatActivity {
     private boolean expandDairy = false;
     private boolean expandGrains = false;
 
+    // hard coded data to display
+    String[] vegetables = {"onions", "mushrooms", "spinach", "potato"};
+    String[] meat = {"chicken", "beef", "bacon", "sausages", "ham"};
+    String[] dairy = {"milk", "cream", "cheese", "yogurt", "butter"};
+    String[] fruits = {"apple", "orange", "grapes", "banana", "strawberries"};
+    String[] grains = {"bread", "rice", "beans", "pasta"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredients);
 
+        /*
         Button btn_veggies;
         Button btn_fruits;
         Button btn_meat;
@@ -41,66 +55,87 @@ public class IngredientsActivity extends AppCompatActivity {
         ImageButton arrow_meat;
         ImageButton arrow_dairy;
         ImageButton arrow_grains;
+        */
 
-        // hard coded data to display
-        String[] vegetables = {"onions", "mushrooms", "spinach", "potato"};
-        String[] meat = {"chicken", "beef", "bacon", "sausages", "ham"};
-        String[] dairy = {"milk", "cream", "cheese", "yogurt", "butter"};
-        String[] fruits = {"apple", "orange", "grapes", "banana", "strawberries"};
-        String[] grains = {"bread", "rice", "beans", "pasta"};
+        veggieItems = new FoodItem[vegetables.length];
+        fruitItems = new FoodItem[fruits.length];
+        meatItems = new FoodItem[meat.length];
+        dairyItems = new FoodItem[dairy.length];
+        grainItems = new FoodItem[grains.length];
+
+        for (int i = 0; i < vegetables.length; i++) {
+            veggieItems[i] = new FoodItem(vegetables[i], 0);
+        }
+        for (int i = 0; i < fruits.length; i++) {
+            fruitItems[i] = new FoodItem(fruits[i], 0);
+        }
+        for (int i = 0; i < meat.length; i++) {
+            meatItems[i] = new FoodItem(meat[i], 0);
+        }
+        for (int i = 0; i < dairy.length; i++) {
+            dairyItems[i] = new FoodItem(dairy[i], 0);
+        }
+        for (int i = 0; i < grains.length; i++) {
+            grainItems[i] = new FoodItem(grains[i], 0);
+        }
 
         // set listviews,adapters, and listeners
-        //ListAdapter veggiesListAdapter = new CustomAdapter(getActivity().getBaseContext(), vegetables);
-        ArrayAdapter<String> veggiesListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, vegetables);
+        // ListAdapter veggiesListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), vegetables);
+        // ArrayAdapter<String> veggiesListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, vegetables);
+        CustomAdapter veggiesListAdapter = new CustomAdapter(this, veggieItems);
         lv_veggies = (ListView) findViewById(R.id.veggies_listview);
         lv_veggies.setAdapter(veggiesListAdapter);
         lv_veggies.setOnItemClickListener(new loadDetails());
 
-        //ListAdapter meatListAdapter = new CustomAdapter(getActivity().getBaseContext(), meat);
-        ArrayAdapter<String> meatListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, meat);
+        // ListAdapter meatListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), meat);
+        // ArrayAdapter<String> meatListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, meat);
+        CustomAdapter meatListAdapter = new CustomAdapter(this, meatItems);
         lv_meat = (ListView) findViewById(R.id.meat_listview);
         lv_meat.setAdapter(meatListAdapter);
         lv_meat.setOnItemClickListener(new loadDetails());
         lv_meat.setVisibility(View.GONE);
 
-        //ListAdapter dairyListAdapter = new CustomAdapter(getActivity().getBaseContext(), dairy);
-        ArrayAdapter<String> dairyListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dairy);
+        // ListAdapter dairyListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), dairy);
+        // ArrayAdapter<String> dairyListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dairy);
+        CustomAdapter dairyListAdapter = new CustomAdapter(this, dairyItems);
         lv_dairy = (ListView) findViewById(R.id.dairy_listview);
         lv_dairy.setAdapter(dairyListAdapter);
         lv_dairy.setOnItemClickListener(new loadDetails());
         lv_dairy.setVisibility(View.GONE);
 
-        //ListAdapter fruitsListAdapter = new CustomAdapter(getActivity().getBaseContext(), fruits);
-        ArrayAdapter<String> fruitsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fruits);
+        // ListAdapter fruitsListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), fruits);
+        // ArrayAdapter<String> fruitsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fruits);
+        CustomAdapter fruitsListAdapter = new CustomAdapter(this, fruitItems);
         lv_fruits = (ListView) findViewById(R.id.fruits_listview);
         lv_fruits.setAdapter(fruitsListAdapter);
         lv_fruits.setOnItemClickListener(new loadDetails());
         lv_fruits.setVisibility(View.GONE);
 
-        //ListAdapter grainsListAdapter = new CustomAdapter(getActivity().getBaseContext(), grains);
-        ArrayAdapter<String> grainsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, grains);
+        // ListAdapter grainsListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), grains);
+        // ArrayAdapter<String> grainsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, grains);
+        CustomAdapter grainsListAdapter = new CustomAdapter(this, grainItems);
         lv_grains = (ListView) findViewById(R.id.grains_listview);
         lv_grains.setAdapter(grainsListAdapter);
         lv_grains.setOnItemClickListener(new loadDetails());
         lv_grains.setVisibility(View.GONE);
 
         // sets listeners for header sections to toggle open/close
-        btn_veggies = (Button) findViewById(R.id.btn_veggies);
-        btn_meat = (Button) findViewById(R.id.btn_meat);
-        btn_dairy = (Button) findViewById(R.id.btn_dairy);
-        btn_fruits = (Button) findViewById(R.id.btn_fruits);
-        btn_grains = (Button) findViewById(R.id.btn_grains);
+        Button btn_veggies  = (Button) findViewById(R.id.btn_veggies);
+        Button btn_meat     = (Button) findViewById(R.id.btn_meat);
+        Button btn_dairy    = (Button) findViewById(R.id.btn_dairy);
+        Button btn_fruits   = (Button) findViewById(R.id.btn_fruits);
+        Button btn_grains   = (Button) findViewById(R.id.btn_grains);
         btn_veggies.setOnClickListener(new toggleVeggiesList());
         btn_meat.setOnClickListener(new toggleMeatsList());
         btn_dairy.setOnClickListener(new toggleDairyList());
-        btn_fruits.setOnClickListener(new toggleDairyList());
-        btn_grains.setOnClickListener(new toggleDairyList());
+        btn_fruits.setOnClickListener(new toggleFruitsList());
+        btn_grains.setOnClickListener(new toggleGrainsList());
 
-        arrow_veggies = (ImageButton) findViewById(R.id.arrow_veggies);
-        arrow_meat = (ImageButton) findViewById(R.id.arrow_meat);
-        arrow_dairy = (ImageButton) findViewById(R.id.arrow_dairy);
-        arrow_fruits = (ImageButton) findViewById(R.id.arrow_fruits);
-        arrow_grains = (ImageButton) findViewById(R.id.arrow_grains);
+        ImageButton arrow_veggies   = (ImageButton) findViewById(R.id.arrow_veggies);
+        ImageButton arrow_meat      = (ImageButton) findViewById(R.id.arrow_meat);
+        ImageButton arrow_dairy     = (ImageButton) findViewById(R.id.arrow_dairy);
+        ImageButton arrow_fruits    = (ImageButton) findViewById(R.id.arrow_fruits);
+        ImageButton arrow_grains    = (ImageButton) findViewById(R.id.arrow_grains);
         arrow_veggies.setOnClickListener(new toggleVeggiesList());
         arrow_meat.setOnClickListener(new toggleMeatsList());
         arrow_dairy.setOnClickListener(new toggleDairyList());
@@ -147,19 +182,13 @@ public class IngredientsActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-/*
-            DecimalFormat fmt = new DecimalFormat("$ #,###.00");
-            String cat_name = String.valueOf(adapter.getItemAtPosition(position));
-            Toast.makeText(getActivity().getBaseContext(), "Mock data for Chequing Account", Toast.LENGTH_SHORT).show();
-
-            TextView listText = (TextView) view.findViewById(R.id.bankingType);
-            String acctType = listText.getText().toString();
-            String acctTotal = fmt.format(AcctSummaryFragment.acctTotals.get(cat_name));
-            Intent intent = new Intent(getActivity().getBaseContext(), AcctDetailActivity.class);
-            intent.putExtra("acctType", acctType);
-            intent.putExtra("acctTotal", acctTotal);
-            startActivity(intent);
-            */
+            System.out.println("@@@@@@@@@@@@@@@@@@ onItemClick called");
+            ListView lv = (ListView) adapter;
+            if(lv.isItemChecked(position)){
+                Toast.makeText(getBaseContext(), "You checked " + vegetables[position], Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getBaseContext(), "You unchecked " + vegetables[position], Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
