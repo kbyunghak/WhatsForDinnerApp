@@ -3,39 +3,46 @@ package whatsfordinner.comp3717.bcit.ca.whatsfordinner;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import whatsfordinner.comp3717.bcit.ca.whatsfordinner.adaptor.MealArrayAdapter;
 
 public class MealActivity extends ListActivity {
 
+//    private MealItem[] mealItems;
     static final String[] FoodList = new String[] { "Pizza", "Tortellini",
-            "Spagetti", "Cake"};
-
+            "Spaghetti", "Cake"};
+    static String food;
+    static int foodNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_meal);
 
         //setListAdapter(new ArrayAdapter<String>(this, R.layout.list_mobile,
         //		R.id.label, MOBILE_OS));
-		
-		// test test
+
+        // test test
 
         setListAdapter(new MealArrayAdapter(this, FoodList));
-
-
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         //get selected items
-        String selectedValue = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, selectedValue, Toast.LENGTH_SHORT).show();
+        foodNum = position;
+        food = (String) getListAdapter().getItem(position);
+        Log.d("foodNum: ", String.valueOf(position));
+        Log.d("foodName: ", food);
+        Toast.makeText(this, food, Toast.LENGTH_LONG).show();
 
     }
 
@@ -64,8 +71,8 @@ public class MealActivity extends ListActivity {
     public void loadRecipe(final View view) {
 
         Intent intent = new Intent(this, RecipeActivity.class);
+        //intent.putExtra("Food Name", food);
         startActivity(intent);
     }
 }
-
 

@@ -42,9 +42,9 @@ public class MealArrayAdapter extends ArrayAdapter<String> {
             imageView.setImageResource(R.drawable.pizza);
         } else if (s.equals("Tortellini")) {
             imageView.setImageResource(R.drawable.tortellini);
-        } else if (s.equals("Spagetti")) {
+        } else if (s.equals("Spaghetti")) {
             imageView.setImageResource(R.drawable.spaghetti);
-        } else {
+        } else if (s.equals("Cake")){
             imageView.setImageResource(R.drawable.cake);
         }
 
