@@ -3,11 +3,13 @@ package whatsfordinner.comp3717.bcit.ca.whatsfordinner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +28,7 @@ public class IngredientsActivity extends AppCompatActivity {
     private FoodItem[] grainItems;
     private FoodItem[] checked;
 
-    private boolean expandVeggies = true;
+    private boolean expandVeggies = false;
     private boolean expandFruits = false;
     private boolean expandMeats = false;
     private boolean expandDairy = false;
@@ -79,13 +81,15 @@ public class IngredientsActivity extends AppCompatActivity {
             grainItems[i] = new FoodItem(grains[i], 0);
         }
 
+
+
         // set listviews,adapters, and listeners
         // ListAdapter veggiesListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), vegetables);
         // ArrayAdapter<String> veggiesListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, vegetables);
-        CustomAdapter veggiesListAdapter = new CustomAdapter(this, veggieItems);
         lv_veggies = (ListView) findViewById(R.id.veggies_listview);
+        CustomAdapter veggiesListAdapter = new CustomAdapter(this, veggieItems);
         lv_veggies.setAdapter(veggiesListAdapter);
-        lv_veggies.setOnItemClickListener(new loadDetails());
+        lv_veggies.setOnItemClickListener(lv_veggiesListener);
 
         // ListAdapter meatListAdapter = new whatsfordinner.comp3717.bcit.ca.whatsfordinner.CustomAdapter(getActivity().getBaseContext(), meat);
         // ArrayAdapter<String> meatListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, meat);
@@ -141,8 +145,19 @@ public class IngredientsActivity extends AppCompatActivity {
         arrow_dairy.setOnClickListener(new toggleDairyList());
         arrow_fruits.setOnClickListener(new toggleFruitsList());
         arrow_grains.setOnClickListener(new toggleGrainsList());
-    }
 
+
+ }
+
+   private AdapterView.OnItemClickListener lv_veggiesListener = new AdapterView.OnItemClickListener() {
+
+       @Override
+        public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
+            Log.d("d", "d");
+            Toast.makeText(getApplicationContext(), ""+(position+1),
+                    Toast.LENGTH_SHORT).show();
+        }
+    };
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -170,6 +185,7 @@ public class IngredientsActivity extends AppCompatActivity {
      *  load the MealActivity page.
      */
     public void loadMealOptions(final View view) {
+
         Intent intent = new Intent(this, MealActivity.class);
         startActivity(intent);
     }

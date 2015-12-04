@@ -10,17 +10,14 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import whatsfordinner.comp3717.bcit.ca.whatsfordinner.adaptor.MealArrayAdapter;
 
 public class MealActivity extends ListActivity {
 
-//    private MealItem[] mealItems;
     static final String[] FoodList = new String[] { "Pizza", "Tortellini",
             "Spaghetti", "Cake"};
-    static String food;
-    static int foodNum;
+   // String food;
+   // int foodNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +33,8 @@ public class MealActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
+        String food;
+         int foodNum;
 
         //get selected items
         foodNum = position;
@@ -44,6 +43,9 @@ public class MealActivity extends ListActivity {
         Log.d("foodName: ", food);
         Toast.makeText(this, food, Toast.LENGTH_LONG).show();
 
+        Intent intent = new Intent(this, RecipeActivity.class);
+        intent.putExtra("Food Name", foodNum);
+        startActivity(intent);
     }
 
     @Override
@@ -70,9 +72,6 @@ public class MealActivity extends ListActivity {
 
     public void loadRecipe(final View view) {
 
-        Intent intent = new Intent(this, RecipeActivity.class);
-        //intent.putExtra("Food Name", food);
-        startActivity(intent);
     }
 }
 
