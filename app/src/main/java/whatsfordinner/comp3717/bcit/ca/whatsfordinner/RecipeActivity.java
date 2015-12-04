@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+/**
+ * Created by Soran on 12/3/2015.
+ */
 
 public class RecipeActivity extends AppCompatActivity {
     StringBuilder sb = new StringBuilder();
@@ -23,17 +27,18 @@ public class RecipeActivity extends AppCompatActivity {
             "http://allrecipes.com/recipe/233348/wedding-gift-spaghetti-sauce/",
             "http://allrecipes.com/recipe/81201/a-plus-carrot-cake/?internalSource=rotd&referringId=276&referringContentType=recipe%20hub"};
 
-    static final String[] MealList = new String[] { "pizza", "tortellini",
-            "spaghetti", "cake"};
+    static final String[] MealList = new String[] { "Pizza", "Tortellini",
+            "Spaghetti", "Cake"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final Intent intent;
+        final int str;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         TextView txtView = (TextView) findViewById(R.id.foodName);
-     //   intent = getIntent();
-      //  str = intent.getStringExtra("Food Name");
-
+        intent = getIntent();
+        str = intent.getIntExtra("Food Name", 0);
+        Log.d("recipeFood: ", String.valueOf(str));
         TextView txtView2 = (TextView) findViewById(R.id.ingredientsName);
         ImageButton recipeLinkButton = (ImageButton) findViewById(R.id.recipeLinkButton);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) recipeLinkButton.getLayoutParams();
@@ -41,26 +46,26 @@ public class RecipeActivity extends AppCompatActivity {
         params.width = 900;
         recipeLinkButton.setLayoutParams(params);
         recipeLinkButton.setScaleType(ImageView.ScaleType.FIT_XY);
-        if(MealActivity.foodNum == 0) {
-            txtView.setText("Food Name: "+ MealActivity.food);
+        if(str == 0) {
+            txtView.setText("Food Name: "+ MealList[0]);
             for(int i = 0; i < PizzaItem.length; i++)
                 sb.append(PizzaItem[i] + ", ");
             recipeLinkButton.setImageResource(R.drawable.pizza);
         }
-        if(MealActivity.foodNum == 1) {
-            txtView.setText("Food Name: "+ MealActivity.food);
+        if(str == 1) {
+            txtView.setText("Food Name: "+ MealList[1]);
             for(int i = 0; i < TortelliniItem.length; i++)
                 sb.append(TortelliniItem[i] + ", ");
             recipeLinkButton.setImageResource(R.drawable.tortellini);
         }
-        if(MealActivity.foodNum == 2) {
-            txtView.setText("Food Name: "+ MealActivity.food);
+        if(str == 2) {
+            txtView.setText("Food Name: "+MealList[2]);
             for(int i = 0; i < SpaghettiItem.length; i++)
                 sb.append(SpaghettiItem[i] + ", ");
             recipeLinkButton.setImageResource(R.drawable.spaghetti);
         }
-        if(MealActivity.foodNum == 3) {
-            txtView.setText("Food Name: "+ MealActivity.food);
+        if(str == 3) {
+            txtView.setText("Food Name: "+ MealList[3]);
             for(int i = 0; i < CakeItem.length; i++)
                 sb.append(CakeItem[i] + ", ");
             recipeLinkButton.setImageResource(R.drawable.cake);
@@ -69,7 +74,7 @@ public class RecipeActivity extends AppCompatActivity {
         recipeLinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL[MealActivity.foodNum]));
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL[str]));
                 startActivity(browserIntent);
             }
         });
@@ -78,7 +83,6 @@ public class RecipeActivity extends AppCompatActivity {
     public void loadMain(final View view) {
 
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.putExtra("Food Name", food);
         startActivity(intent);
     }
     @Override

@@ -69,9 +69,9 @@ public class MealActivity extends ListActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+/*
     public void loadRecipe(final View view) {
 
-    }
+    }*/
 }
 

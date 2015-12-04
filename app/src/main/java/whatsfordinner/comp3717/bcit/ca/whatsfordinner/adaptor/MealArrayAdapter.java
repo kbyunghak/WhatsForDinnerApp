@@ -35,19 +35,18 @@ public class MealArrayAdapter extends ArrayAdapter<String> {
 
         // Change icon based on name
         String s = values[position];
-
         System.out.println(s);
+
 
         if (s.equals("Pizza")) {
             imageView.setImageResource(R.drawable.pizza);
         } else if (s.equals("Tortellini")) {
             imageView.setImageResource(R.drawable.tortellini);
-        } else if (s.equals("Spaghetti")) {
+        } else  if (s.equals("Spaghetti")) {
             imageView.setImageResource(R.drawable.spaghetti);
-        } else if (s.equals("Cake")){
+        } else if (s.equals("Cake")) {
             imageView.setImageResource(R.drawable.cake);
         }
-
         return rowView;
     }
 }
